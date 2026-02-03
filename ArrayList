@@ -1,0 +1,49 @@
+package lab2;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Lab2Employee {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter employee name: ");
+        String employeeName = scanner.nextLine();
+
+        ArrayList<String> departments = new ArrayList<>();
+        ArrayList<Integer> salaries = new ArrayList<>();
+
+        System.out.println("Enter department names (type 'stop' to finish):");
+        while (true) {
+            System.out.print("Department: ");
+            String department = scanner.nextLine();
+
+            if (department.equalsIgnoreCase("stop")) {
+                break;
+            }
+            departments.add(department);
+        }
+
+        int totalSalary = 0;
+
+        System.out.println("Enter salary for each department:");
+        for (String department : departments) {
+            System.out.print(department + " salary: ");
+            int salary = scanner.nextInt();
+            salaries.add(salary);
+            totalSalary += salary;
+        }
+
+        double averageSalary = (double) totalSalary / departments.size();
+
+        System.out.println("\nEmployee: " + employeeName);
+        System.out.println("Departments and salaries:");
+        for (int i = 0; i < departments.size(); i++) {
+            System.out.println(departments.get(i) + " — " + salaries.get(i));
+        }
+
+        System.out.println("Total salary: " + totalSalary);
+        System.out.println("Average salary: " + averageSalary);
+    }
+}
